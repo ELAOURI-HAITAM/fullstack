@@ -6,7 +6,8 @@ const AddUser = ({users}) => {
   const [email, setEmail] = useState('');
   const [date, setDate] = useState('');
   const [age, setAge] = useState('');
-  const [message, setMessage] = useState('');
+  const [success_message, setSuccess_Message] = useState('');
+  const [error_message, setError_Message] = useState('');
   const link_to = useNavigate();
 
   
@@ -26,13 +27,13 @@ const AddUser = ({users}) => {
         new_user
       );
       if (response.status === 201) {
-        setMessage("USER ADDED SUCCESSUFLY ");
+        setSuccess_Message("USER ADDED SUCCESSUFLY ");
         setTimeout(() => link_to("/"), 2000);
       }
     }
     catch(err)
     {
-      setMessage(err.message)
+      setError_Message(err.response?.data.message)
     }
   };
   return (
@@ -40,10 +41,13 @@ const AddUser = ({users}) => {
       <Link to={"/"}>
         <button>Back</button>
       </Link>
-      {message &&
-      <h1 className="alert alert-success">{message}</h1>
+      {success_message &&
+      <h1 className="alert alert-success animate__animated animate__slideInRight text-center">{success_message}</h1>
       }
-      <div className="row d-flex justify-content-center text-center">
+      {error_message &&
+      <h1 className="alert alert-danger animate__animated animate__slideInRight text-center">{error_message}</h1>
+      }
+      <div className="row d-flex justify-content-center text-center animate__animated animate__fadeInDown">
         <div className="card col-md-6 col-sm-1">
           <div className="card-header bg-warning ">
             <h3>Add New User</h3>

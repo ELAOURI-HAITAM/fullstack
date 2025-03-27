@@ -3,11 +3,13 @@ import React, { useEffect, useState } from "react";
 import { GoInfo, GoTrash } from "react-icons/go";
 import { Modal, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import 'animate.css'
 const UsersLists = () => {
   const [modal_details, setModal_Details] = useState();
   const [modal_delete, setModal_Delete] = useState();
   const [user_details, setUser_Details] = useState({});
-  const [message, setMessage] = useState("");
+  const [success_message, setSuccess_Message] = useState("");
+  const [error_message, setError_Message] = useState("");
   const [users, setUsers] = useState([]);
   const [selected_user, setSelected_User] = useState();
   const Fetch_Data = async () => {
@@ -17,13 +19,13 @@ const UsersLists = () => {
         setUsers(response.data);
       }
     } catch (err) {
-      setMessage(err.message);
+      setError_Message(err.response?.data.message);
     }
   };
   useEffect(() => {
     Fetch_Data();
   }, []);
-  console.log(message);
+  
 
   const ShowDetails = async (user_id) => {
     try {
@@ -33,7 +35,7 @@ const UsersLists = () => {
         setModal_Details(true);
       }
     } catch (err) {
-      setMessage(err.message);
+      setError_Message(err.response?.data.message);
     }
   };
   /*
@@ -50,27 +52,38 @@ selected_id = (user_id) => button
     try {
       const response = await axios.delete(`http://localhost:3010/api/user/${id}`);
       if (response.status == 200) {
-        setMessage("USER DELETED SUCCESSUFLY");
-        setTimeout(() => setMessage(""), 3000);
+        setSuccess_Message("USER DELETED SUCCESSUFLY");
+        setTimeout(() => setSuccess_Message(""), 3000);
         setModal_Delete(false);
         Fetch_Data();
       }
     } catch (err) {
-      setMessage(err.message);
+      setError_Message(err.response?.data.message);
     }
   };
+
+  
   return (
     <>
-      {message && (
-        <h1 className=" alert alert-primary motion-preset-slide-left-md text-center">
-          {message}
+      {success_message && (
+        <h1 className=" alert alert-success animate__animated animate__slideInRight text-center">
+          {success_message}
         </h1>
       )}
-      <h1 className="text-4xl text-center font-medium">USERS LISTS</h1>
+      {error_message && (
+        <h1 className=" alert alert-danger animate__animated animate__slideInRight text-center">
+          {error_message}
+        </h1>
+      )}
+      {users.length < 1 &&
+          <h1 className="alert alert-danger text-center animate__animated animate__slideInRight" >NO DATA TO DISPLAY :(</h1>
+      
+      }
+      <h1 className=" text-center ">USERS LISTS</h1>
       <Link to={'/add_user'}>
         <button className="btn btn-success">ADD NEW USER</button>
       </Link>
-      <table className="table table-dark text-center duartion-1000 motion-preset-slide-down-lg">
+      <table className="table table-dark text-center animate__animated animate__fadeInDown">
         <thead>
           <tr>
             <th>Name</th>
@@ -81,21 +94,23 @@ selected_id = (user_id) => button
           </tr>
         </thead>
         <tbody>
-          {users.map((items, index) => (
+          { users.map((items, index) => (
             <tr key={index}>
               <td>{items.name}</td>
               <td>{items.email}</td>
               <td>{items.date}</td>
               <td>{items.age}</td>
-              <td className="flex justify-center gap-10 ">
+              <td className="d-flex justify-content-center gap-5 ">
                 <button
-                  className="btn btn-warning w-40 "
+                  className="btn btn-warning btn-lg   "
+                  style={{width : "50%"}}
                   onClick={() => ShowDetails(items.id)}
                 >
-                  <GoInfo className="text-5xl ml-10 " />
+                  <GoInfo className=" " />
                 </button>
                 <button
-                  className="btn btn-danger w-40 "
+                  className="btn btn-danger w-40 btn-lg"
+                  style={{width : "50%"}}
                   onClick={() => Confrim_Delete(items.id)}
                 >
                   <GoTrash className="text-4xl ml-12 " />
