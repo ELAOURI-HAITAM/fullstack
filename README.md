@@ -3,11 +3,15 @@
 ## Project Description
 This project is a web application that enables users to manage their projects and tasks collaboratively. The application includes features for organizing, tracking, and sharing tasks among team members.
 
+## MEMBERS
+- AKOTHIAT ADIL
+- ELAOURI HAITAM
+- BEL ACHHAB EL KHADER ABDELMOIZ
 ## Technologies Used
 - **Backend:** Node.js, Express.js
 - **Database:** MongoDB
 - **Security:** Bcrypt
-- **Containerization:** Docker, Docker Compose
+- **Containerization:** DockerFile, Docker Compose
 
 ## Project Structure
 The project is divided into three main services:
@@ -34,17 +38,19 @@ The project is divided into three main services:
 - Integrated chat feature to allow communication within projects and teams
 
 ## API Routes
-### Auth-Service
+### Auth-Service BY ABDELMOIZ EL KHADER BEL ACHHAB
 | Route | Method | Functionality |
 |---|---|---|
-| `/auth/register` | POST | Register a new user |
-| `/auth/login` | POST | User login |
-| `/auth/users` | GET | Get all users |
-| `/auth/users/:id` | GET | Get user by ID |
-| `/auth/users/:id` | PUT | Update user information |
-| `/auth/users/:id` | DELETE | Delete a user |
+| `/User/register` | POST | Register a new user |
+| `/User/login` | POST | User login |
+| `/User/users` | GET | Get all users |
+| `/User/users/:id` | GET | Get user by ID |
+| `/User/users/:id` | PUT | Update user information |
+| `/User/users/:id` | DELETE | Delete a user |
+| `/User/block/:id` | PATCH  | Block or Unblock a user |
+| `/User/search` | GET  | Search by name,email or role |
 
-### Project-Service
+### Project-Service BY ELAOURI HAITAM
 | Route | Method | Functionality |
 |---|---|---|
 | `/project/all` | GET | Get all projects |
@@ -52,33 +58,26 @@ The project is divided into three main services:
 | `/project/create` | POST | Create a new project |
 | `/project/:id` | PUT | Update project details |
 | `/project/:id` | DELETE | Delete a project |
+| `/project/categ` | POST  | Create new Category |
+| `/project/filter` | GET  | Filter by name,date_debut,date_fin and status |
 
-### Task-Service
+### Task-Service BY ADIL AKOTHIAT
 | Route | Method | Functionality |
 |---|---|---|
-| `/task/all` | GET | Get all tasks |
+| `/task/tasks` | GET | Get all tasks |
 | `/task/:id` | GET | Get task by ID |
 | `/task/create` | POST | Create a new task |
 | `/task/:id` | PUT | Update task details |
 | `/task/:id` | DELETE | Delete a task |
-| `/task/:id/comment` | POST | Add a comment to a task |
+| `/task/UserTask` | POST | Assigning tasks to specific users. |
+| `/task/comment` | POST | Adding comment on a task. |
 
-## Team Members
-- John Doe
-- Jane Smith
-- Alex Brown
 
-## How to Run the Project
-_(Steps to install and run the project will be added later)_
 
 ## GitHub Repository
-_(Link will be added later)_
+https://github.com/Adil-Akothiat/Micro-service-TaskMng.git
 
-## Additional Notes
-- The project is containerized using Docker and Docker Compose for easier deployment and scalability.
-- Each service runs independently, following a microservices architecture.
 
----
 
-This document will be updated as the project evolves.
+
 
