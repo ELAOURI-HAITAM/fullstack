@@ -1,16 +1,15 @@
 # Backend Project - Collaborative Task Management
-
-## Project Description
-This project is a web application that enables users to manage their projects and tasks collaboratively. The application includes features for organizing, tracking, and sharing tasks among team members.
-
 ## MEMBERS
 - AKOTHIAT ADIL
 - ELAOURI HAITAM
 - BEL ACHHAB EL KHADER ABDELMOIZ
+## Project Description
+This project is a web application that enables users to manage their projects and tasks collaboratively. The application includes features for organizing, tracking, and sharing tasks among team members.
+
 ## Technologies Used
 - **Backend:** Node.js, Express.js
 - **Database:** MongoDB
-- **Security:** Bcrypt
+- **Security:** Bcrypt , json web token
 - **Containerization:** DockerFile, Docker Compose
 
 ## Project Structure
@@ -72,10 +71,18 @@ The project is divided into three main services:
 | `/task/UserTask` | POST | Assigning tasks to specific users. |
 | `/task/comment` | POST | Adding comment on a task. |
 
-
+### CHAT
+| Route | Method | Functionality |
+|---|---|---|
+| `/chat/message` | POST | Send Messages |
+| `/chat/:room` | GET | Get Messages by room |
+| `/chat/:chatId` | DELETE | Delete specific Message by id |
+| `/chat/:chatId` | PATCH | Modify specific Message by id |
 
 ## GitHub Repository
 https://github.com/Adil-Akothiat/Micro-service-TaskMng.git
+
+
 
 
 
