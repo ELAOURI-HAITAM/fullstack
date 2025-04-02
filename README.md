@@ -85,7 +85,8 @@ https://github.com/Adil-Akothiat/Micro-service-TaskMng.git
 ## Documented source code
 **auth-service**
 - controller:
-  const User = require("../models/User");
+  ```javascript
+   const User = require("../models/User");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
@@ -233,6 +234,7 @@ module.exports = {
   BlockUser,
   search,
 };
+ 
 
 
 
