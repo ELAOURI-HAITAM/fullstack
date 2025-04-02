@@ -85,7 +85,7 @@ https://github.com/Adil-Akothiat/Micro-service-TaskMng.git
 ## Documented source code
 **auth-service**
 - controller:
-  ```javascript
+
    const User = require("../models/User");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
@@ -150,15 +150,13 @@ const getUsers = async (req, res) => {
   }
 };
 
-
 // GET ONE USER
 const getUser = async (req, res) => {
   try {
-    const userId = req.params.id
+    const userId = req.params.id;
     const users = await User.findById(userId);
-    if(!users)
-    {
-      return res.status(404).json({message : "user not found "})
+    if (!users) {
+      return res.status(404).json({ message: "user not found " });
     }
     res.json(users);
   } catch (err) {
@@ -189,7 +187,6 @@ const updateUser = async (req, res) => {
 const deleteUser = async (req, res) => {
   try {
     const delete_user = await User.deleteOne({ _id: req.params.id });
-
 
     res.json({ message: "Delete success", delete_user });
   } catch (err) {
@@ -234,7 +231,7 @@ module.exports = {
   BlockUser,
   search,
 };
- 
+
 
 
 
