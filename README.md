@@ -80,10 +80,9 @@ The project is divided into three main services:
 | `/chat/:chatId` | PATCH | Modify specific Message by id |
 
 ## GitHub Repository
-https://github.com/Adil-Akothiat/Micro-service-TaskMng.git
+https://github.com/ELAOURI-HAITAM/BACKEND_PROJECT.git
 
-## Documented source code
-**auth-service**
+
 
 
 
